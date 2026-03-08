@@ -5,7 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kinship Today</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Inter:wght@300;400;500&display=swap');
+
+  :root {
+    --navy-deep: #050824;
+    --navy: #09073A;
+    --navy-mid: #100E59;
+    --orange: #EB8000;
+    --orange-glow: rgba(235, 128, 0, 0.2);
+    --cream: #FAF9F5;
+    --cream-dim: rgba(250, 249, 245, 0.78);
+    --cream-faint: rgba(255, 255, 255, 0.06);
+    --white: #FFFFFF;
+    --white-90: rgba(255, 255, 255, 0.9);
+    --white-60: rgba(255, 255, 255, 0.6);
+    --white-10: rgba(255, 255, 255, 0.1);
+    --white-06: rgba(255, 255, 255, 0.06);
+    --umber: #4E3629;
+  }
 
   * {
     margin: 0;
@@ -18,10 +35,11 @@
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
-    font-family: 'Inter', sans-serif;
-    color: #2d2a26;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--cream);
     overflow: hidden;
     position: relative;
+    background: var(--navy-deep);
   }
 
   /* Animated gradient background */
@@ -29,60 +47,51 @@
     position: fixed;
     inset: 0;
     z-index: -2;
-    background: linear-gradient(
-      135deg,
-      #f8f4f0 0%,
-      #f0e8df 25%,
-      #e8ddd0 50%,
-      #f2ece4 75%,
-      #faf6f2 100%
+    background: radial-gradient(
+      ellipse at 30% 20%,
+      var(--navy-mid) 0%,
+      var(--navy) 40%,
+      var(--navy-deep) 100%
     );
-    background-size: 400% 400%;
-    animation: gradientShift 20s ease infinite;
   }
 
-  @keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  /* Subtle floating orbs */
+  /* Subtle floating orbs — warm orange & indigo */
   .orb {
     position: fixed;
     border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.15;
+    filter: blur(100px);
+    opacity: 0.12;
     z-index: -1;
-    animation: float 15s ease-in-out infinite;
+    animation: float 18s ease-in-out infinite;
   }
 
   .orb-1 {
-    width: 400px;
-    height: 400px;
-    background: #c4956a;
-    top: -100px;
-    right: -100px;
+    width: 500px;
+    height: 500px;
+    background: var(--orange);
+    top: -150px;
+    right: -150px;
     animation-delay: 0s;
   }
 
   .orb-2 {
-    width: 350px;
-    height: 350px;
-    background: #8b7355;
-    bottom: -80px;
-    left: -80px;
-    animation-delay: -5s;
+    width: 400px;
+    height: 400px;
+    background: #2a1fa0;
+    bottom: -100px;
+    left: -100px;
+    animation-delay: -6s;
   }
 
   .orb-3 {
-    width: 250px;
-    height: 250px;
-    background: #d4a574;
-    top: 50%;
-    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: var(--orange);
+    top: 60%;
+    left: 40%;
     transform: translate(-50%, -50%);
-    animation-delay: -10s;
+    animation-delay: -12s;
+    opacity: 0.06;
   }
 
   @keyframes float {
@@ -116,7 +125,7 @@
     justify-content: center;
     text-align: center;
     padding: 2rem;
-    max-width: 680px;
+    max-width: 720px;
     width: 100%;
     flex: 1;
     transition: opacity 0.5s ease, transform 0.5s ease;
@@ -131,6 +140,7 @@
   .hero-content > *:nth-child(2) { transition-delay: 0.05s; }
   .hero-content > *:nth-child(3) { transition-delay: 0.1s; }
   .hero-content > *:nth-child(4) { transition-delay: 0.15s; }
+  .hero-content > *:nth-child(5) { transition-delay: 0.2s; }
 
   @keyframes fadeInUp {
     from {
@@ -147,9 +157,18 @@
     animation: fadeInUp 1.2s ease-out both;
   }
   .hero-content > *:nth-child(1) { animation-delay: 0.1s; }
-  .hero-content > *:nth-child(2) { animation-delay: 0.25s; }
-  .hero-content > *:nth-child(3) { animation-delay: 0.4s; }
-  .hero-content > *:nth-child(4) { animation-delay: 0.55s; }
+  .hero-content > *:nth-child(2) { animation-delay: 0.3s; }
+  .hero-content > *:nth-child(3) { animation-delay: 0.5s; }
+  .hero-content > *:nth-child(4) { animation-delay: 0.7s; }
+  .hero-content > *:nth-child(5) { animation-delay: 0.9s; }
+
+  /* Cat/fawn symbol */
+  .hero-symbol {
+    width: 56px;
+    height: auto;
+    margin-bottom: 2rem;
+    opacity: 0.7;
+  }
 
   /* "Go Deeper" button */
   .go-deeper {
@@ -157,31 +176,32 @@
     align-items: center;
     gap: 8px;
     padding: 10px 28px;
-    border: 1.5px solid rgba(139, 115, 85, 0.3);
+    border: 1.5px solid var(--white-10);
     border-radius: 100px;
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(10px);
-    color: #6b5a45;
+    background: var(--white-06);
+    backdrop-filter: blur(12px);
+    color: var(--cream-dim);
     font-family: 'Inter', sans-serif;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 500;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     cursor: pointer;
     transition: all 0.4s ease;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
   }
 
   .go-deeper:hover {
-    background: rgba(255, 255, 255, 0.7);
-    border-color: rgba(139, 115, 85, 0.5);
+    background: rgba(235, 128, 0, 0.12);
+    border-color: rgba(235, 128, 0, 0.4);
+    color: var(--orange);
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(139, 115, 85, 0.12);
+    box-shadow: 0 8px 30px rgba(235, 128, 0, 0.1);
   }
 
   .go-deeper svg {
-    width: 16px;
-    height: 16px;
+    width: 14px;
+    height: 14px;
     transition: transform 0.3s ease;
   }
 
@@ -191,62 +211,61 @@
 
   /* Intro text */
   .intro {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
   }
 
   .intro h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.75rem;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.8rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #3d362e;
+    color: var(--white);
     margin-bottom: 0;
   }
 
   .intro h1 .name {
-    font-weight: 600;
+    font-weight: 700;
     font-style: italic;
-    color: #6b5a45;
+    color: var(--orange);
   }
 
   .intro p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.35rem;
-    font-weight: 300;
-    line-height: 1.7;
-    color: #5a5148;
-    margin-top: 1.5rem;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    line-height: 1.8;
+    color: var(--cream-dim);
+    margin-top: 1.25rem;
   }
 
   /* People count */
   .count-line {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
     font-weight: 300;
-    color: #7a6e62;
+    color: var(--white-60);
     margin-bottom: 2.5rem;
-    line-height: 1.7;
+    line-height: 1.8;
   }
 
   .count-line .number {
     font-weight: 600;
-    color: #6b5a45;
-    font-size: 1.35rem;
-    letter-spacing: 0.02em;
+    color: var(--orange);
+    letter-spacing: 0.03em;
   }
 
   .count-line .subtle {
     font-style: italic;
-    opacity: 0.85;
+    opacity: 0.75;
   }
 
   /* Prompt question */
   .prompt {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.45rem;
     font-weight: 400;
     font-style: italic;
-    color: #4a4039;
+    color: var(--white-90);
     margin-bottom: 0;
     line-height: 1.5;
   }
@@ -258,7 +277,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 680px;
+    max-width: 720px;
     padding: 0 1rem;
     transition: flex 0.6s ease;
     min-height: 0;
@@ -290,7 +309,7 @@
     opacity: 0;
     transition: opacity 0.4s ease 0.3s, flex 0.6s ease;
     scrollbar-width: thin;
-    scrollbar-color: rgba(139, 115, 85, 0.3) transparent;
+    scrollbar-color: rgba(235, 128, 0, 0.3) transparent;
     scroll-behavior: smooth;
   }
 
@@ -307,7 +326,7 @@
   }
 
   .chat-messages::-webkit-scrollbar-thumb {
-    background: rgba(139, 115, 85, 0.3);
+    background: rgba(235, 128, 0, 0.3);
     border-radius: 4px;
   }
 
@@ -315,7 +334,7 @@
     padding: 16px 20px;
     border-radius: 20px;
     font-size: 0.95rem;
-    line-height: 1.6;
+    line-height: 1.65;
     animation: messageFadeIn 0.4s ease-out both;
     white-space: pre-wrap;
     word-wrap: break-word;
@@ -333,8 +352,8 @@
   }
 
   .chat-bubble.user {
-    background: linear-gradient(135deg, #8b7355, #a6896b);
-    color: #fff;
+    background: linear-gradient(135deg, var(--orange), #d47200);
+    color: var(--white);
     align-self: flex-end;
     border-bottom-right-radius: 6px;
     max-width: 85%;
@@ -342,15 +361,15 @@
   }
 
   .chat-bubble.assistant {
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--white-06);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(139, 115, 85, 0.15);
-    color: #3d362e;
+    border: 1px solid var(--white-10);
+    color: var(--cream);
     align-self: flex-start;
     border-bottom-left-radius: 6px;
     max-width: 90%;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.05rem;
   }
 
   /* Typing indicator */
@@ -358,9 +377,9 @@
     display: flex;
     gap: 5px;
     padding: 16px 24px;
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--white-06);
     backdrop-filter: blur(12px);
-    border: 1px solid rgba(139, 115, 85, 0.15);
+    border: 1px solid var(--white-10);
     border-radius: 20px;
     border-bottom-left-radius: 6px;
     align-self: flex-start;
@@ -371,7 +390,7 @@
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: #a89a8c;
+    background: var(--orange);
     animation: typingBounce 1.4s ease-in-out infinite;
   }
 
@@ -384,7 +403,7 @@
   }
 
   @keyframes typingBounce {
-    0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.3; }
     30% { transform: translateY(-6px); opacity: 1; }
   }
 
@@ -403,9 +422,9 @@
   .container[data-state="conversation"] .chat-input-bar {
     padding: 0.75rem 0.5rem;
     padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
-    background: rgba(248, 244, 240, 0.85);
+    background: rgba(5, 8, 36, 0.9);
     backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(139, 115, 85, 0.1);
+    border-top: 1px solid var(--white-06);
     margin: 0 -1rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -414,7 +433,7 @@
   /* Chatbot selector */
   .chatbot-selector {
     width: 100%;
-    max-width: 560px;
+    max-width: 600px;
     display: none;
   }
 
@@ -423,19 +442,19 @@
   .chatbot-selector select {
     width: 100%;
     padding: 12px 18px;
-    border: 1.5px solid rgba(139, 115, 85, 0.25);
+    border: 1.5px solid var(--white-10);
     border-radius: 100px;
-    background: rgba(255, 255, 255, 0.5);
+    background: var(--white-06);
     backdrop-filter: blur(12px);
     font-family: 'Inter', sans-serif;
     font-size: 0.85rem;
     font-weight: 400;
-    color: #3d362e;
+    color: var(--cream);
     outline: none;
     cursor: pointer;
     appearance: none;
     -webkit-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238b7355' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23EB8000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 18px center;
     padding-right: 44px;
@@ -443,29 +462,34 @@
   }
 
   .chatbot-selector select:focus {
-    border-color: rgba(139, 115, 85, 0.5);
-    background-color: rgba(255, 255, 255, 0.85);
-    box-shadow: 0 4px 24px rgba(139, 115, 85, 0.1);
+    border-color: rgba(235, 128, 0, 0.5);
+    background-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 24px rgba(235, 128, 0, 0.08);
+  }
+
+  .chatbot-selector select option {
+    background: var(--navy-deep);
+    color: var(--cream);
   }
 
   /* Chat input wrapper */
   .chat-input-wrapper {
     width: 100%;
-    max-width: 560px;
+    max-width: 600px;
     position: relative;
   }
 
   .chat-input {
     width: 100%;
     padding: 16px 60px 16px 24px;
-    border: 1.5px solid rgba(139, 115, 85, 0.25);
+    border: 1.5px solid var(--white-10);
     border-radius: 28px;
-    background: rgba(255, 255, 255, 0.6);
+    background: var(--white-06);
     backdrop-filter: blur(12px);
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
     font-weight: 300;
-    color: #3d362e;
+    color: var(--cream);
     outline: none;
     transition: all 0.3s ease;
     resize: none;
@@ -477,14 +501,14 @@
   }
 
   .chat-input::placeholder {
-    color: #a89a8c;
+    color: rgba(250, 249, 245, 0.35);
     font-style: italic;
   }
 
   .chat-input:focus {
-    border-color: rgba(139, 115, 85, 0.5);
-    background: rgba(255, 255, 255, 0.85);
-    box-shadow: 0 4px 24px rgba(139, 115, 85, 0.1);
+    border-color: rgba(235, 128, 0, 0.5);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 24px rgba(235, 128, 0, 0.08);
   }
 
   /* Voice icon button */
@@ -496,8 +520,8 @@
     height: 42px;
     border-radius: 50%;
     border: none;
-    background: linear-gradient(135deg, #8b7355, #a6896b);
-    color: #fff;
+    background: linear-gradient(135deg, var(--orange), #d47200);
+    color: var(--white);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -506,8 +530,8 @@
   }
 
   .voice-btn:hover {
-    background: linear-gradient(135deg, #7a6348, #96795b);
-    box-shadow: 0 4px 16px rgba(139, 115, 85, 0.25);
+    background: linear-gradient(135deg, #d47200, #c06800);
+    box-shadow: 0 4px 20px rgba(235, 128, 0, 0.35);
   }
 
   .voice-btn svg {
@@ -524,8 +548,8 @@
     height: 42px;
     border-radius: 50%;
     border: none;
-    background: linear-gradient(135deg, #8b7355, #a6896b);
-    color: #fff;
+    background: linear-gradient(135deg, var(--orange), #d47200);
+    color: var(--white);
     cursor: pointer;
     display: none;
     align-items: center;
@@ -534,12 +558,12 @@
   }
 
   .send-btn:hover {
-    background: linear-gradient(135deg, #7a6348, #96795b);
-    box-shadow: 0 4px 16px rgba(139, 115, 85, 0.25);
+    background: linear-gradient(135deg, #d47200, #c06800);
+    box-shadow: 0 4px 20px rgba(235, 128, 0, 0.35);
   }
 
   .send-btn:disabled {
-    opacity: 0.5;
+    opacity: 0.4;
     cursor: not-allowed;
   }
 
@@ -572,6 +596,7 @@
   .container[data-state="conversation"] .hero-content > *:nth-child(2) { transition-delay: 0.04s; }
   .container[data-state="conversation"] .hero-content > *:nth-child(3) { transition-delay: 0.08s; }
   .container[data-state="conversation"] .hero-content > *:nth-child(4) { transition-delay: 0.12s; }
+  .container[data-state="conversation"] .hero-content > *:nth-child(5) { transition-delay: 0.16s; }
 
   .container[data-state="conversation"] .hero-content > * {
     opacity: 0;
@@ -582,20 +607,24 @@
      RESPONSIVE
      ======================================== */
   @media (max-width: 600px) {
+    .hero-symbol {
+      width: 44px;
+      margin-bottom: 1.5rem;
+    }
     .intro h1 {
       font-size: 1.4rem;
     }
     .intro p {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
     }
     .prompt {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
     }
     .count-line {
-      font-size: 1.05rem;
+      font-size: 0.9rem;
     }
     .chat-bubble.assistant {
-      font-size: 1rem;
+      font-size: 0.98rem;
     }
     .chat-wrapper {
       padding: 0 0.5rem;
@@ -619,6 +648,11 @@
     <!-- Hero content — fades out on first message -->
     <div class="hero-content">
 
+      <!-- Cat/Fawn Symbol -->
+      <svg class="hero-symbol" viewBox="0 0 445 726" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M311.935 724.193C306.324 727.187 280.808 726.359 258.892 722.461C244.234 719.862 236.457 712.625 225.764 691.634C209.209 659.122 198.554 647.814 156.387 618.016C146.06 610.721 133.769 602.213 129.053 599.114C124.346 596.015 115.25 589.413 108.84 584.437C84.5278 565.554 80.1388 559.49 79.571 543.966C79.263 535.564 80.1388 528.538 85.0187 500.175C86.0581 494.082 87.2131 483.698 87.5692 477.076C88.2045 465.315 88.1564 464.872 85.3363 457.278C78.8876 439.916 69.0509 422.486 52.4095 398.945C41.1291 382.997 35.3445 370.976 33.612 359.898C32.8517 354.999 31.6197 347.098 30.8786 342.343C28.944 329.956 25.5752 323.556 14.9205 312.016C9.04929 305.655 5.00685 300.275 3.00487 296.136C0.0692768 290.063 -0.017372 289.505 0.0018778 276.887C0.0211276 265.328 0.27138 263.336 2.29261 258.822C5.41108 251.864 9.03006 248.976 14.6414 248.976C18.5298 248.976 19.4827 249.429 22.6878 252.797C24.6801 254.895 29.0595 261.238 32.3993 266.897C39.5506 278.976 45.1427 284.952 52.4383 288.311C59.7918 291.699 64.3155 291.41 85.7212 286.184C117.455 278.446 147.792 275.193 178.168 276.29C202.491 277.166 212.857 278.485 229.488 282.835C251.818 288.658 256.236 289.514 264.667 289.659C273.705 289.813 278.518 287.84 283.32 282.027C288.162 276.146 289.432 271.17 289.933 256.137C290.761 231.123 286.603 216.696 276.391 209.121C274.071 207.408 272.3 207.11 264.359 207.11H255.043L239.643 213.751C208.602 227.129 197.168 230.17 180.334 229.506C168.63 229.054 162.595 226.801 156.079 220.449C147.253 211.845 147.619 207.649 158.062 197.745C179.102 177.765 184.02 172.827 189.507 166.206C199.978 153.579 201.576 150.739 206.466 136.004C214.887 110.625 218.949 105.293 236.505 96.621C250.875 89.5182 253.137 86.9388 253.079 77.7282C253.05 73.7341 252.213 68.97 250.788 64.7833C248.844 59.0279 248.603 56.8817 249.027 48.4218C249.422 40.3661 250.105 37.0457 252.983 29.2113C261.684 5.5448 269.952 -3.14609 279.846 0.992426C284.177 2.80182 285.967 6.18001 287.382 15.2462C289.028 25.708 287.883 54.6295 285.39 65.5822C283.08 75.7648 282.984 78.5559 284.783 82.8773C286.141 86.1111 292.666 94.0224 293.985 94.0224C294.37 94.0224 295.871 91.8377 297.325 89.1717C300.924 82.5501 309.895 71.4338 316.228 65.7458C332.032 51.5401 352.514 42.7337 370.06 42.599C377.529 42.5412 379.695 42.8684 381.899 44.3602C385.239 46.622 387.25 50.3851 387.982 55.746C389.194 64.6871 380.821 80.1728 367.327 93.9166C358.491 102.915 354.651 105.37 343.197 109.345C334.178 112.482 333.341 113.704 336.209 119.624C340.579 128.593 346.238 133.877 365.248 146.668C378.164 155.369 384.767 163.771 405.201 197.485C428.329 235.656 440.235 269.524 444.268 308.571C445.75 322.979 444.855 356.501 442.718 366.395C440.678 375.836 433.787 393.208 427.078 405.855C424.123 411.418 417.761 423.545 412.939 432.803C399.204 459.184 390.706 470.878 360.041 505.584C331.426 537.989 311.531 567.786 296.892 600.163C293.629 607.362 287.324 620.846 282.887 630.105C274.648 647.284 272.916 652.424 272.868 659.758C272.81 671.153 277.95 678.468 293.292 688.804C303.773 695.869 309.635 701.239 312.917 706.783C318.066 715.483 317.749 721.085 311.935 724.193ZM210.248 621.087L228.016 639.585L229.893 636.524C235.822 626.881 285.409 523.042 288.999 512.744C291.126 506.623 291.54 503.764 291.579 494.814C291.617 484.756 291.463 483.928 288.961 480.146C284.504 473.409 279.288 470.81 255.726 463.631C238.574 458.395 224.551 455.921 212.096 455.912C196.696 455.902 194.589 456.768 183.53 467.721C167.812 483.293 156.464 499.982 148.042 519.905C141.931 534.351 141.363 541.531 145.607 550.597C148.091 555.9 151.989 560.453 170.517 579.74C182.596 592.309 200.479 610.914 210.248 621.087Z" fill="var(--orange)" opacity="0.8"/>
+      </svg>
+
       <button class="go-deeper">
         Go Deeper
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -627,7 +661,7 @@
       </button>
 
       <div class="intro">
-        <h1>I'm the spirit of Kinship&nbsp;Today.</h1>
+        <h1>I'm the spirit of <span class="name">Kinship&nbsp;Today.</span></h1>
         <p>I'm here to help you deeply connect with yourself,<br>
         with others, and with the cosmos as a whole.</p>
       </div>
@@ -741,14 +775,12 @@
   function autoResize() {
     chatInput.style.height = 'auto';
     chatInput.style.height = Math.min(chatInput.scrollHeight, 150) + 'px';
-    // Switch to scrollable if at max
     chatInput.style.overflowY = chatInput.scrollHeight > 150 ? 'auto' : 'hidden';
   }
 
   chatInput.addEventListener('input', () => {
     autoResize();
 
-    // Toggle send/voice button
     if (chatInput.value.trim()) {
       voiceBtn.style.display = 'none';
       sendBtn.style.display = 'flex';
@@ -817,20 +849,16 @@
     const message = chatInput.value.trim();
     if (!message) return;
 
-    // Transition to conversation mode on first message
     transitionToConversation();
 
-    // Show user message
     addMessage(message, 'user');
 
-    // Clear input and reset
     chatInput.value = '';
     chatInput.style.height = 'auto';
     chatInput.style.overflowY = 'hidden';
     voiceBtn.style.display = 'flex';
     sendBtn.style.display = 'none';
 
-    // Show typing indicator
     isLoading = true;
     sendBtn.disabled = true;
     showTyping();
